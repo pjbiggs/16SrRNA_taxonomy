@@ -44,30 +44,28 @@ Going back to our example of *Gemmata obscuriglobus*, it is a member of the Plan
 The Perl script described here has the following dependencies:
 
 ```
-BioPerl - specifically Bio::Seq Bio::SeqIO
-Perl modules DBI and DBD::MySQL
-A MySQL or equivalent database
+BioPerl: specifically Bio::Seq Bio::SeqIO
+Perl modules: DBI and DBD::MySQL
+A MySQL database
 ```
 
-### Retrieve data from NCBI
+### Retrieve data from NCBI and parse
 
-*The 16S RefSeq rRNA database (“16SMicrobial.tar.gz” as described at: https://www.ncbi.nlm.nih.gov/refseq/targetedloci/16S_process/) was downloaded from the NCBI FTP BLAST database site (ftp://ftp.ncbi.nlm.nih.gov/blast/db/), and was converted back to a fasta format file using the BLAST+ tool blastdbcmd (the 2016 version was used to allow the keeping of the GI identifier in the header by the use of the “%f” flag).  This resulted in the fasta sequence file (“16SMicrobial.fasta”) from the database.  Upon execution of the shell script “id_to_tax_mapmaker.sh” (which can be found at https://github.com/mtruglio/QIIME_utilities), a taxonomic file (“16S_id_to_tax.map”) that linked the GenBank GI accession IDs to the header in the fasta file was generated.  This script downloads files from the NCBI taxonomy server and matches the GI accession number in the fasta file with the taxonomy description.  This process resulted in a pair of files each with 18,773 entries present.*
+1. Download the file "16SMicrobial.tar.gz" from the [NCBI FTP BLAST database site](ftp://ftp.ncbi.nlm.nih.gov/blast/db/), and uncompress it.
+2. Convert it back to a fasta format file using the BLAST+ tool blastdbcmd.  This results in a files called "16SMicrobial.fasta".
+3. Execute the shell script "id_to_tax_mapmaker.sh" (the instructions for which can be found at the [QIIME_utilities](https://github.com/mtruglio/QIIME_utilities) page) that generates a taxonomic file ("16S_id_to_tax.map") linking the GenBank GI accession IDs to the headers in the fasta filed.  This script downloads files from the NCBI taxonomy server and matches the GI accession number in the fasta file with the taxonomy description.  This process resulted in a pair of files each with 18,773 entries present (as of August 2018).
 
 
-### Perl script
+### Perl script for taxonomy parsing on the mapping file
 
-A Perl script was written (XXXXXX) updated the NCBI taxonomy to parse the output so that suborders and tribes were removed. Three steps of analyses were required: 
+The input mapping file is defined as being of two columns, the first being the GI accession ID, and the second being the taxonomy.  The data structure of the NCBI taxonomy was a character string delimited by semicolons, and it was this string that is parsed using the Perl script (NCBI_16StaxaParse.pl) and stored in a MySQL database.
+
+The Perl script (NCBI_16StaxaParse.pl) updates the downloaded NCBI taxonomy to parse the output so that suborders and tribes were removed. Three steps of analyses were required: 
   * simple taxonomy, where names were correctly classified;
   * complex taxonomy, where a specific taxonomic name needed to be removed;
   * names including the word "Group". 
   
-The initial step resets the group naming issue for L3, and L6 - L9. This was conducted one at a time as some ‘groups’ changed their location as they were moved back through the taxonomy.
-
-### Procedure
-
-*The input mapping file was defined as being of two columns, the first being the GI accession ID, and the second being the taxonomy.  The data structure of the NCBI taxonomy was a character string delimited by semicolons, and it was this string that was parsed using a custom Perl script (available on request) and stored in a MySQL database (version 5.7.18).  The taxonomy used the NCBI full lineage, which therefore included intermediate taxonomic classifications for a number of taxa.  
+*The initial step resets the group naming issue for L3, and L6 - L9. This was conducted one at a time as some ‘groups’ changed their location as they were moved back through the taxonomy.
 
 *The string was split into an array, which for the reason described above had a variable number of elements.    The split array was loaded into a table within MySQL and the taxonomy was analysed as a group at the L2 level.  Archaea were analysed first, and then bacteria.  Whilst these subsets were manually curated to work out the most parsimonious taxonomic situation, the building of a new taxonomic table was done by writing MySQL scripts that would process the taxonomy if necessary and move the curated data from that subset into a new table.
-
-
 
