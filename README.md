@@ -11,7 +11,7 @@ In addition, bacterial taxonomy contains a large number of intermiediate taxonom
 
 ## Principle
 
-We want to optimise the number of members in the database that have within their full taxonomic classification names that end in "-ales" for the taxonomic level of order (L4), and "ceae" for the taxonomc order of family (L5).  In other words, there is hte requirement to convert the Full taxonomy to an Abbreviated version, as shown on the [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) page in an automated way.  For example, with *Gemmata obscuriglobus* (NCBI:txid114), we would want to change the taxonomy:
+We want to optimise the number of members in the database that have within their full taxonomic classification names that end in "*-ales*" for the taxonomic level of order (L4), and "*-ceae*" for the taxonomc order of family (L5).  In other words, there is the requirement to convert the Full taxonomy to an Abbreviated version, as shown on the [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) page in a more automated way.  For example, with *Gemmata obscuriglobus* (NCBI:txid114), we would want to change the taxonomy:
 
  * Lineage (full):
     * cellular organisms; Bacteria; PVC group; Planctomycetes; Planctomycetia; Planctomycetales; Gemmataceae; Gemmata; Gemmata obscuriglobus
