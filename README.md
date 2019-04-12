@@ -51,9 +51,9 @@ A MySQL database
 
 ### Retrieve data from NCBI and parse
 
-1. Download the file "16SMicrobial.tar.gz" from the [NCBI FTP BLAST database site](ftp://ftp.ncbi.nlm.nih.gov/blast/db/), and uncompress it.
-2. Convert it back to a fasta format file using the BLAST+ tool blastdbcmd.  This results in a files called "16SMicrobial.fasta".
-3. Execute the shell script "id_to_tax_mapmaker.sh" (the instructions for which can be found at the [QIIME_utilities](https://github.com/mtruglio/QIIME_utilities) page) that generates a taxonomic file ("16S_id_to_tax.map") linking the GenBank GI accession IDs to the headers in the fasta filed.  This script downloads files from the NCBI taxonomy server and matches the GI accession number in the fasta file with the taxonomy description.  This process resulted in a pair of files each with 18,773 entries present (as of August 2018).
+1. Download the file "16SMicrobial.tar.gz" from the NCBI FTP BLAST database site (ftp://ftp.ncbi.nlm.nih.gov/blast/db/), and uncompress it.
+2. Convert it back to a fasta format file using the BLAST+ tool blastdbcmd.  This results in a file called "16SMicrobial.fasta".
+3. Execute the shell script "id_to_tax_mapmaker.sh" (the instructions for which can be found at the [QIIME_utilities](https://github.com/mtruglio/QIIME_utilities) page) that generates a taxonomic file ("16S_id_to_tax.map"), linking the GenBank GI accession IDs to the headers in the fasta filed.  This script downloads files from the NCBI taxonomy server and matches the GI accession number in the fasta file with the taxonomy description.  This process resulted in a pair of files each with 18,773 entries present (as of August 2018).
 
 
 ### Perl script for taxonomy parsing on the mapping file
@@ -65,7 +65,13 @@ The Perl script (NCBI_16StaxaParse.pl) updates the downloaded NCBI taxonomy to p
   * complex taxonomy, where a specific taxonomic name needed to be removed;
   * names including the word "Group". 
   
-*The initial step resets the group naming issue for L3, and L6 - L9. This was conducted one at a time as some ‘groups’ changed their location as they were moved back through the taxonomy.
+<<Need to tidy this section up.>>  
+  
+*The initial step resets the group naming issue for L3, and L6 - L9. This was conducted one at a time as some ‘groups’ changed their location as they were moved back through the taxonomy.*
 
-*The string was split into an array, which for the reason described above had a variable number of elements.    The split array was loaded into a table within MySQL and the taxonomy was analysed as a group at the L2 level.  Archaea were analysed first, and then bacteria.  Whilst these subsets were manually curated to work out the most parsimonious taxonomic situation, the building of a new taxonomic table was done by writing MySQL scripts that would process the taxonomy if necessary and move the curated data from that subset into a new table.
+*The string was split into an array, which for the reason described above had a variable number of elements.    The split array was loaded into a table within MySQL and the taxonomy was analysed as a group at the L2 level.  Archaea were analysed first, and then bacteria.  Whilst these subsets were manually curated to work out the most parsimonious taxonomic situation, the building of a new taxonomic table was done by writing MySQL scripts that would process the taxonomy if necessary and move the curated data from that subset into a new table.*
 
+
+### Downstream use in QIIME2
+
+The updated taxonomy file "16S_id_to_taxModDone.map" and the fasta file "16SMicrobial.fasta" are able to be used as per the QIIME2 tutorials for feature classification.
