@@ -51,21 +51,21 @@ A MySQL database
 
 ### Retrieve data from NCBI and parse
 
-1. Download the file "16SMicrobial.tar.gz" from the NCBI FTP BLAST database site (ftp://ftp.ncbi.nlm.nih.gov/blast/db/), and uncompress it.
-2. Convert it back to a fasta format file using the BLAST+ tool blastdbcmd.  This results in a file called "16SMicrobial.fasta".
-3. Execute the shell script "id_to_tax_mapmaker.sh" (the instructions for which can be found at the [QIIME_utilities](https://github.com/mtruglio/QIIME_utilities) page) that generates a taxonomic file ("16S_id_to_tax.map"), linking the GenBank GI accession IDs to the headers in the fasta filed.  This script downloads files from the NCBI taxonomy server and matches the GI accession number in the fasta file with the taxonomy description.  This process resulted in a pair of files each with 18,773 entries present (as of August 2018).
+1. Download the file `16SMicrobial.tar.gz` from the NCBI FTP BLAST database site (ftp://ftp.ncbi.nlm.nih.gov/blast/db/), and uncompress it.
+2. Convert it back to a fasta format file using the BLAST+ tool `blastdbcmd`.  This results in a file called `16SMicrobial.fasta`.
+3. Execute the shell script `id_to_tax_mapmaker.sh` (the instructions for which can be found at the [QIIME_utilities](https://github.com/mtruglio/QIIME_utilities) page) that generates a taxonomic file ("16S_id_to_tax.map"), linking the GenBank GI accession IDs to the headers in the fasta filed.  This script downloads files from the NCBI taxonomy server and matches the GI accession number in the fasta file with the taxonomy description.  This process resulted in a pair of files each with 18,773 entries present (as of August 2018).
 
 
 ### Perl script for taxonomy parsing on the mapping file
 
-The input mapping file is defined as being of two columns, the first being the GI accession ID, and the second being the taxonomy.  The data structure of the NCBI taxonomy was a character string delimited by semicolons, and it was this string that is parsed using the Perl script (NCBI_16StaxaParse.pl) and stored in a MySQL database.
+The input mapping file is defined as being of two columns, the first being the GI accession ID, and the second being the taxonomy.  The data structure of the NCBI taxonomy was a character string delimited by semicolons, and it was this string that is parsed using the Perl script (`NCBI_16StaxaParse.p`) and stored in a MySQL database.
 
-The Perl script (NCBI_16StaxaParse.pl) updates the downloaded NCBI taxonomy to parse the output so that suborders and tribes were removed. Three steps of analyses were required: 
+The Perl script (`NCBI_16StaxaParse.pl`) updates the downloaded NCBI taxonomy to parse the output so that suborders and tribes were removed. Three steps of analyses were required: 
   * simple taxonomy, where names were correctly classified;
   * complex taxonomy, where a specific taxonomic name needed to be removed;
   * names including the word "Group". 
   
-<<Need to tidy this section up.>>  
+""Need to tidy this section up""  
   
 *The initial step resets the group naming issue for L3, and L6 - L9. This was conducted one at a time as some ‘groups’ changed their location as they were moved back through the taxonomy.*
 
