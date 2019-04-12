@@ -74,4 +74,4 @@ The Perl script (NCBI_16StaxaParse.pl) updates the downloaded NCBI taxonomy to p
 
 ### Downstream use in QIIME2
 
-The updated taxonomy file "16S_id_to_taxModDone.map" and the fasta file "16SMicrobial.fasta" are able to be used as per the QIIME2 tutorials for feature classification.
+The updated taxonomy file `16S_id_to_taxModDone.map` and the fasta file `16SMicrobial.fasta` are able to be used as per the QIIME2 tutorials for feature classification.
