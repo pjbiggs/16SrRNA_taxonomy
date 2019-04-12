@@ -58,7 +58,7 @@ A MySQL database
 
 ### Perl script for taxonomy parsing on the mapping file
 
-The input mapping file is defined as being of two columns, the first being the GI accession ID, and the second being the taxonomy.  The data structure of the NCBI taxonomy was a character string delimited by semicolons, and it was this string that is parsed using the Perl script (`NCBI_16StaxaParse.p`) and stored in a MySQL database.
+The input mapping file is defined as being of two columns, the first being the GI accession ID, and the second being the taxonomy.  The data structure of the NCBI taxonomy was a character string delimited by semicolons, and it was this string that is parsed using the Perl script (`NCBI_16StaxaParse.pl`) and stored in a MySQL database.
 
 The Perl script (`NCBI_16StaxaParse.pl`) updates the downloaded NCBI taxonomy to parse the output so that suborders and tribes were removed. Three steps of analyses were required: 
   * simple taxonomy, where names were correctly classified;
@@ -74,4 +74,4 @@ The Perl script (`NCBI_16StaxaParse.pl`) updates the downloaded NCBI taxonomy to
 
 ### Downstream use in QIIME2
 
-The updated taxonomy file `16S_id_to_taxModDone.map` and the fasta file `16SMicrobial.fasta` are able to be used as per the QIIME2 tutorials for feature classification.
+The updated taxonomy file `16S_id_to_taxModDone.map` and the fasta file `16SMicrobial.fasta` are able to be used as per the QIIME2 tutorials for feature classification.  An example of such a process can be found in the script `NCBIclassifier.sh`.
