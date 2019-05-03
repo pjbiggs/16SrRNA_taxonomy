@@ -60,16 +60,46 @@ A MySQL database
 
 The input mapping file is defined as being of two columns, the first being the GI accession ID, and the second being the taxonomy.  The data structure of the NCBI taxonomy was a character string delimited by semicolons, and it was this string that is parsed using the Perl script (`NCBI_16StaxaParse.pl`) and stored in a MySQL database.
 
+The taxonomy string was split into an array, which for the reason described above had a variable number of elements.  The split array was loaded into a table within MySQL and the taxonomy was analysed at the L2 level.  Archaea were analysed first, and then bacteria.  Whilst these subsets were manually inspected initally to work out the taxonomic situation (by name), the building of a new taxonomic table was done by writing a Perl/MySQL script that would process the taxonomy if necessary and move the curated data from that subset into a new table.
+
 The Perl script (`NCBI_16StaxaParse.pl`) updates the downloaded NCBI taxonomy to parse the output so that suborders and tribes were removed. Three steps of analyses were required: 
   * simple taxonomy, where names were correctly classified;
   * complex taxonomy, where a specific taxonomic name needed to be removed;
   * names including the word "Group". 
-  
-""Need to tidy this section up""  
-  
-*The initial step resets the group naming issue for L3, and L6 - L9. This was conducted one at a time as some ‘groups’ changed their location as they were moved back through the taxonomy.*
+ 
+ With the data as analysed, the simple taxonomy phyla to process were:
 
-*The string was split into an array, which for the reason described above had a variable number of elements.    The split array was loaded into a table within MySQL and the taxonomy was analysed as a group at the L2 level.  Archaea were analysed first, and then bacteria.  Whilst these subsets were manually curated to work out the most parsimonious taxonomic situation, the building of a new taxonomic table was done by writing MySQL scripts that would process the taxonomy if necessary and move the curated data from that subset into a new table.*
+| Domain   | Phylum                          | number   |
+|----------|---------------------------------|---------:|
+| Archaea  | DPANN_group                     |        1 |
+| Archaea  | Euryarchaeota                   |      800 |
+| Bacteria | Acidobacteria                   |       39 |
+| Bacteria | Aquificae                       |       44 |
+| Bacteria | Caldiserica                     |        3 |
+| Bacteria | Chrysiogenetes                  |        6 |
+| Bacteria | Deferribacteres                 |       14 |
+| Bacteria | Dictyoglomi                     |        5 |
+| Bacteria | Elusimicrobia                   |        3 |
+| Bacteria | Fusobacteria                    |       75 |
+| Bacteria | Nitrospirae                     |       13 |
+| Bacteria | Spirochaetes                    |      160 |
+| Bacteria | Synergistetes                   |       34 |
+| Bacteria | Thermodesulfobacteria           |       13 |
+| Bacteria | Thermotogae                     |       70 |
+| Bacteria | unclassified_Bacteria           |        7 |
+ 
+With the data as analysed, the more complex taxonomy phyla to process were:
+	
+| Domain   | Phylum                          | number   |
+|----------|---------------------------------|---------:|
+| Archaea  | TACK_group                      |      120 |
+| Bacteria | FCB_group                       |     1713 |
+| Bacteria | Nitrospinae/Tectomicrobia_group |        1 |
+| Bacteria | Proteobacteria                  |     6826 |
+| Bacteria | PVC_group                       |      132 |
+| Bacteria | Terrabacteria_group             |     8694 | 
+ 
+For working with taxonomic names with the word "group" in them, the process was slightly more complicated.  The initial step resets the group naming issue for L3, and L6 - L9. This was conducted one at a time as some ‘groups’ changed their location as they were moved back through the taxonomy.  Overall, this process involved two rounds of analysis as there were examples of taxonomic names with the word "group" in them twice.  
 
 
 ### Downstream use in QIIME2
