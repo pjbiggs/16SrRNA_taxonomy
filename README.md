@@ -4,7 +4,7 @@ A repository to store the code required to perform an ordered taxonomic adjustme
 
 ## Rationale
 
-The honey bee microbiome is a relatively new area of research, with new bacterial strains being identified and reclassified frequently. Previous work indicated that incorrectly assigned taxa were correctly identified by BLASTing 16S rRNA sequences that were expected to be present in the honey bee microbiome. To ensure honey bee classifications were current, the 16S rRNA BLAST (Basic Local Alignment Search Tool) database was downloaded from National Center for Biotechnology Information (NCBI) (ftp://ftp.ncbi.nlm.nih.gov/blast/db/) and customised to make a QIIME 2 compatible reference dataset.
+The honey bee microbiome is a relatively new area of research, with new bacterial strains being identified and reclassified frequently. Previous work indicated that incorrectly assigned taxa were correctly identified by BLASTing 16S rRNA sequences that were expected to be present in the honey bee microbiome. To ensure honey bee classifications were current, the 16S rRNA BLAST (Basic Local Alignment Search Tool) database was downloaded from National Center for Biotechnology Information (NCBI) at (ftp://ftp.ncbi.nlm.nih.gov/blast/db/) and customised to make a [QIIME2](https://qiime2.org/) compatible reference dataset.
 
 In addition, bacterial taxonomy contains a number of intermediate taxonomic levels (e.g. suborders), which can complicate taxonomic analyses in tools such as QIIME2 wherein the taxonomy becomes an array, and is split on certain delimiters (e.g. "__", or ";"), as described below.  This situation is more complex for eukaryotes, but the parsing code described here refers to bacteria and archaea, and is only applicable to these domains.
 
