@@ -4,9 +4,9 @@ A repository to store the code required to perform an ordered taxonomic adjustme
 
 ## Rationale
 
-The insect microbiome is a relatively new area of research, with new taxa being identified regularly, thus making existing databases used in 16S rRNA metabarcoding analyses, such as RDP and Greengenes, taxonomically out of date.  Previous work had indicated that incorrectly assigned taxa were identified by BLASTing 16S rRNA sequences that were expected to be present in the insect microbiome.  As the NCBI 16S rRNA database is a more current source of information, this dataset was used as a source to make a new [QIIME2](https://qiime2.org/) compatible dataset, that could be classified for use within that environment.
+The honey bee microbiome is a relatively new area of research, with new bacterial strains being identified and reclassified frequently. Previous work indicated that incorrectly assigned taxa were correctly identified by BLASTing 16S rRNA sequences that were expected to be present in the honey bee microbiome. To ensure honey bee classifications were current, the 16S rRNA BLAST (Basic Local Alignment Search Tool) database was downloaded from National Center for Biotechnology Information (NCBI) (ftp://ftp.ncbi.nlm.nih.gov/blast/db/) and customised to make a QIIME 2 compatible reference dataset.
 
-In addition, bacterial taxonomy contains a number of intermediate taxonomic levels (e.g. suborders), which can complicate taxonomic analyses in tools such as QIIME2 wherein the taxonomy becomes an array, and is split on certain delimiters (e.g. "__", or ";"), as described below.  This situation is more complex for eukaryotes, but the work described here refers to bacteria and archaea, and the parsing code is only applicable to these domains only.
+In addition, bacterial taxonomy contains a number of intermediate taxonomic levels (e.g. suborders), which can complicate taxonomic analyses in tools such as QIIME2 wherein the taxonomy becomes an array, and is split on certain delimiters (e.g. "__", or ";"), as described below.  This situation is more complex for eukaryotes, but the parsing code described here refers to bacteria and archaea, and is only applicable to these domains.
 
 
 ## Principle
