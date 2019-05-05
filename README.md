@@ -18,12 +18,12 @@ In addition, bacterial taxonomy contains a number of intermediate taxonomic leve
 
 ### The NCBI Taxonomic Database
 
-The [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) page lists the taxonomy for known organisms.  For a given organism, there is a Full and an Abbreviated version.  For example, for *Gemmata obscuriglobus* (NCBI:txid114):
+The [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) page lists the taxonomy for known organisms.  For a given organism, there is a Full and an Abbreviated version.  For example, for *Lactobacllus mellifer* (NCBI:txid1218492):
 
- * Lineage (full):
-    * cellular organisms; Bacteria; PVC group; Planctomycetes; Planctomycetia; Planctomycetales; Gemmataceae; Gemmata; Gemmata obscuriglobus
- * Lineage (abbreviated): 
-    * Bacteria; Planctomycetes; Planctomycetia; Planctomycetales; Gemmataceae; Gemmata; Gemmata obscuriglobus
+Lineage (full)
+    cellular organisms; Bacteria; Terrabacteria group; Firmicutes; Bacilli; Lactobacillales; Lactobacillaceae; Lactobacillus; Lactobacillus mellifer 
+Lineage (abbreviated)
+    Bacteria; Firmicutes; Bacilli; Lactobacillales; Lactobacillaceae; Lactobacillus; Lactobacillus mellifer
 
 We presume the following taxonomic ranks:
 
@@ -39,7 +39,7 @@ The goal therefore is to optimise the number of members in any taxonomic sequenc
 
 ### Intermediate taxonomic classifications
 
-Going back to our example of *Gemmata obscuriglobus*, it is a member of the Planctomycetes phylum, but with the full NCBI taxonomy, it is also a member of the PVC group (between the levels of kingdom and phylum), which therefore offsets all subsequent taxonomic assignments by one. In an automated way, this offset causes problems in subsequent analyses.
+Going back to our example of *Lactobacllus mellifer*, it is a member of the Firmicutes phylum, but with the full NCBI taxonomy, it is also a member of the Terrabacteria group (between the levels of kingdom and phylum), which therefore offsets all subsequent taxonomic assignments by one. In an automated way, this offset causes problems in subsequent analyses.
 
 
 ## Preparation of a custom 16S rRNA BLAST database
