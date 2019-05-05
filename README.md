@@ -2,6 +2,11 @@
 A repository to store the code required to perform an ordered taxonomic adjustment on NCBI 16S rRNA sequences.
 
 
+## Introduction
+
+The work described here has come from the analysis of the honey bee microbiome which is a part of Michelle Taylor's ongoing PhD.  Michelle is a scientist based at The New Zealand Institute for Plant and Food Research Limited, Hamilton, New Zealand.
+
+
 ## Rationale
 
 The honey bee microbiome is a relatively new area of research, with new bacterial strains being identified and reclassified frequently. Previous work indicated that incorrectly assigned taxa were correctly identified by BLASTing 16S rRNA sequences that were expected to be present in the honey bee microbiome. To ensure honey bee classifications were current, the 16S rRNA BLAST (Basic Local Alignment Search Tool) database was downloaded from National Center for Biotechnology Information (NCBI) at (ftp://ftp.ncbi.nlm.nih.gov/blast/db/) and customised to make a [QIIME2](https://qiime2.org/) compatible reference dataset.
