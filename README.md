@@ -20,10 +20,10 @@ In addition, bacterial taxonomy contains a number of intermediate taxonomic leve
 
 The [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) page lists the taxonomy for known organisms.  For a given organism, there is a Full and an Abbreviated version.  For example, for *Lactobacllus mellifer* (NCBI:txid1218492):
 
-Lineage (full)
-    cellular organisms; Bacteria; Terrabacteria group; Firmicutes; Bacilli; Lactobacillales; Lactobacillaceae; Lactobacillus; Lactobacillus mellifer 
-Lineage (abbreviated)
-    Bacteria; Firmicutes; Bacilli; Lactobacillales; Lactobacillaceae; Lactobacillus; Lactobacillus mellifer
+* Lineage (full)
+    * cellular organisms; Bacteria; Terrabacteria group; Firmicutes; Bacilli; Lactobacillales; Lactobacillaceae; Lactobacillus; Lactobacillus mellifer 
+* Lineage (abbreviated)
+    * Bacteria; Firmicutes; Bacilli; Lactobacillales; Lactobacillaceae; Lactobacillus; Lactobacillus mellifer
 
 We presume the following taxonomic ranks:
 
