@@ -4,7 +4,7 @@ A repository to store the code required to perform an ordered taxonomic adjustme
 
 ## Introduction
 
-The work described here has come from the analysis of the honey bee microbiome which is a part of Michelle Taylor's ongoing PhD.  Michelle is a scientist based at [The New Zealand Institute for Plant and Food Research Limited] (https://www.plantandfood.co.nz/), Hamilton, New Zealand.
+The work described here has come from the analysis of the honey bee microbiome which is a part of Michelle Taylor's ongoing PhD.  Michelle is a scientist based at [The New Zealand Institute for Plant and Food Research Limited](https://www.plantandfood.co.nz/), Hamilton, New Zealand.
 
 
 ## Rationale
